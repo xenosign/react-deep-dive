@@ -76,8 +76,24 @@
 //   })(i), i * 1000)
 // };
 
-for (let i = 0; i < 5; i++) {
-  setTimeout(function () {
-    console.log(i);
-  }, i * 1000);
+// for (let i = 0; i < 5; i++) {
+//   setTimeout(function () {
+//     console.log(i);
+//   }, i * 1000);
+// }
+
+function foo() {
+  console.log('foo');
 }
+
+function bar() {
+  console.log('bar');
+}
+
+function baz() {
+  console.log('baz');
+}
+
+setTimeout(foo, 0);
+
+Promise.resolve().then(bar).then(baz);

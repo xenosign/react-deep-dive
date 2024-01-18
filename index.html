@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>동기 코드: <button id="sync">0</button></li>
+    <li>매크로 태스크 <button id="macro">0</button></li>
+    <li>마이크로 태스크<button id="micro">0</button></li>
+  </ul>
+
+  <button id="all">모두 실행</button>
+</body>
+
+<script>
+  const btn = document.getElementById('run');
+  const sync = document.getElementById('sync');
+  const macro = document.getElementById('macro');
+  const micro = document.getElementById('micro');
+
+  const all = document.getElementById('all');
+
+  const TIMES = 100000;
+
+  sync.addEventListener('click', () => {
+    for (let i = 0; i <= TIMES; i++) {
+      sync.innerHTML = i;
+    }
+  })
+
+  macro.addEventListener('click', () => {
+    for (let i = 0; i <= TIMES; i++) {
+      setTimeout(() => {
+        macro.innerHTML = i;
+      }, 0);
+    }
+  })
+
+  micro.addEventListener('click', () => {
+    for (let i = 0; i <= TIMES; i++) {
+      queueMicrotask(() => {
+        micro.innerHTML = i;
+      });
+    }
+  })
+
+  all.addEventListener('click', () => {
+    for (let i = 0; i <= TIMES; i++) {
+      sync.innerHTML = i;
+
+      setTimeout(() => {
+        macro.innerHTML = i;
+      }, 0);
+
+      queueMicrotask(() => {
+        micro.innerHTML = i;
+      });
+    }
+  })
+</script>
+
+</html>
