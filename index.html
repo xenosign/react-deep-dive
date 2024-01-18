@@ -12,6 +12,7 @@
     <li>동기 코드: <button id="sync">0</button></li>
     <li>매크로 태스크 <button id="macro">0</button></li>
     <li>마이크로 태스크<button id="micro">0</button></li>
+    <li>test<button id="test">0</button></li>
   </ul>
 
   <button id="all">모두 실행</button>
@@ -22,6 +23,7 @@
   const sync = document.getElementById('sync');
   const macro = document.getElementById('macro');
   const micro = document.getElementById('micro');
+  const test = document.getElementById('test');
 
   const all = document.getElementById('all');
 
@@ -60,6 +62,27 @@
       queueMicrotask(() => {
         micro.innerHTML = i;
       });
+    }
+  })
+
+  test.addEventListener('click', () => {
+    for (let i = 0; i <= TIMES; i++) {
+      queueMicrotask(() => {
+        console.log('fisrt', i);
+      })
+    }
+
+    for (let i = 0; i <= TIMES; i++) {
+      queueMicrotask(() => {
+        console.log('second', i);
+      })
+    }
+
+    for (let i = 0; i <= TIMES; i++) {
+      setTimeout(() => {
+        test.innerHTML = i;
+        console.log('MACRO');
+      }, 100);
     }
   })
 </script>
