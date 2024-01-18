@@ -10,8 +10,6 @@
 //     console.log(1 / y);
 // }
 
-
-
 // console.log(+0 === -0);
 // test1(+0, -0);
 
@@ -82,18 +80,34 @@
 //   }, i * 1000);
 // }
 
-function foo() {
-  console.log('foo');
-}
+// function foo() {
+//   console.log('foo');
+// }
 
-function bar() {
-  console.log('bar');
-}
+// function bar() {
+//   console.log('bar');
+// }
 
-function baz() {
-  console.log('baz');
-}
+// function baz() {
+//   console.log('baz');
+// }
 
-setTimeout(foo, 0);
+// setTimeout(foo, 0);
 
-Promise.resolve().then(bar).then(baz);
+// Promise.resolve().then(bar).then(baz);
+
+const [a = 1, b = 1, c = 1, d = 1, e = 1] = [undefined, null, 0, ""];
+
+console.log(a, b, c, d, e);
+
+const arr = [1, 2, 3, 4, 5];
+
+const result = arr.reduce((acc, cur) => {
+  if (cur % 2 === 0) {
+    acc.push(cur);
+  }
+
+  return acc;
+}, []);
+
+console.log(result);
