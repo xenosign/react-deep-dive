@@ -22,4 +22,4 @@ const obj2 = {
   test: "테스트",
 };
 
-horn(obj2);
+// horn(obj2);
