@@ -96,18 +96,27 @@
 
 // Promise.resolve().then(bar).then(baz);
 
-const [a = 1, b = 1, c = 1, d = 1, e = 1] = [undefined, null, 0, ""];
+// const [a = 1, b = 1, c = 1, d = 1, e = 1] = [undefined, null, 0, ""];
 
-console.log(a, b, c, d, e);
+// console.log(a, b, c, d, e);
 
-const arr = [1, 2, 3, 4, 5];
+// const arr = [1, 2, 3, 4, 5];
 
-const result = arr.reduce((acc, cur) => {
-  if (cur % 2 === 0) {
-    acc.push(cur);
-  }
+// const result = arr.reduce((acc, cur) => {
+//   if (cur % 2 === 0) {
+//     acc.push(cur);
+//   }
 
-  return acc;
-}, []);
+//   return acc;
+// }, []);
 
-console.log(result);
+// console.log(result);
+
+/**
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ */
+function sum(a, b) {
+  return a + b;
+}
