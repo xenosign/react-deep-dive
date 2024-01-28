@@ -8,22 +8,26 @@ function App() {
   return (
     <>
       <div className="App">
+        <ModuleBtn />
+        <ModuleBtn variant="blue" />
+        <ModuleBtn variant="green" />
+        <ModuleBtn color="#000" />
+        <br />
+        <br />
+        <SassBtn />
         <SassBtn variant="blue" />
-        <SassBtn variant="" />
         <SassBtn variant="green" />
         <br />
         <br />
+        <StyledBtn />
         <StyledBtn variant="blue" />
-        <StyledBtn color="#000" />
         <StyledBtn variant="green" />
+        <StyledBtn color="#000" />
         <br />
         <br />
+        <TailwindBtn />
         <TailwindBtn color="blue" />
-        <TailwindBtn color="" />
-        <br />
-        <br />
-        <ModuleBtn variant="blue" />
-        <ModuleBtn variant="" />
+        <TailwindBtn color="green" />
       </div>
     </>
   );

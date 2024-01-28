@@ -1,0 +1,30 @@
+.moduleBtn {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  font-weight: 700;
+  text-align: center;
+  padding: 17px 48px;
+  color: #fff;
+  background-color: #1ed760;
+  height: 48px;
+
+  &:hover {
+    transform: scale(1.04);
+    background-color: #21e065;
+  }
+
+  &.green {
+    background-color: #1ed760;
+  }
+
+  &.blue {
+    background-color: #3f95f1;
+  }
+}
