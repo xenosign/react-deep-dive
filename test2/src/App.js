@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import ModuleBtn from "./components/ModuleBtn";
 import SassBtn from "./components/SassBtn";
@@ -5,30 +6,16 @@ import StyledBtn from "./components/StyledBtn";
 import TailwindBtn from "./components/TailwindBtn";
 
 function App() {
+  const [state, setState] = useState(() => {
+    console.log("복잡한 연산");
+    return 0;
+  });
+
+
   return (
     <>
-      <div className="App">
-        <ModuleBtn />
-        <ModuleBtn variant="blue" />
-        <ModuleBtn variant="green" />
-        <ModuleBtn color="#000" />
-        <br />
-        <br />
-        <SassBtn />
-        <SassBtn variant="blue" />
-        <SassBtn variant="green" />
-        <br />
-        <br />
-        <StyledBtn />
-        <StyledBtn variant="blue" />
-        <StyledBtn variant="green" />
-        <StyledBtn color="#000" />
-        <br />
-        <br />
-        <TailwindBtn />
-        <TailwindBtn color="blue" />
-        <TailwindBtn color="green" />
-      </div>
+      <h1>{state}</h1>
+      <button onClick={() => setState((prev) => prev + 1)}>리렌더링</button>
     </>
   );
 }
