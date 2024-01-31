@@ -1,31 +1,14 @@
 import "./App.css";
-import ModuleBtn from "./components/ModuleBtn";
-import SassBtn from "./components/SassBtn";
-import StyledBtn from "./components/StyledBtn";
-import TailwindBtn from "./components/TailwindBtn";
+import ForwardRef from "./components/ForwardRef";
+import UseDebugValue from "./components/UseDebugValue";
+import UseImperativeHandle from "./components/UseImperativeHandle";
+import UseReducer from "./components/UseReducer";
 
 function App() {
   return (
-    <>
-      <div className="App">
-        <SassBtn variant="blue" />
-        <SassBtn variant="" />
-        <SassBtn variant="green" />
-        <br />
-        <br />
-        <StyledBtn variant="blue" />
-        <StyledBtn color="#000" />
-        <StyledBtn variant="green" />
-        <br />
-        <br />
-        <TailwindBtn color="blue" />
-        <TailwindBtn color="" />
-        <br />
-        <br />
-        <ModuleBtn variant="blue" />
-        <ModuleBtn variant="" />
-      </div>
-    </>
+    <div className="App">
+      <UseDebugValue />
+    </div>
   );
 }
 

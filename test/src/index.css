@@ -1,12 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --blue-color: #3f95f1;
-  --green-color: #1ed760;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
