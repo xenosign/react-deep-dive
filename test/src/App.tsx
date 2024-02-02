@@ -3,11 +3,12 @@ import ForwardRef from "./components/ForwardRef";
 import UseDebugValue from "./components/UseDebugValue";
 import UseImperativeHandle from "./components/UseImperativeHandle";
 import UseReducer from "./components/UseReducer";
+import WithFoo from "./components/WithFoo";
 
 function App() {
   return (
     <div className="App">
-      <UseDebugValue />
+      <WithFoo />
     </div>
   );
 }
