@@ -8,3 +8,7 @@
 // console.log(Boolean(test));
 
 console.log(Boolean(null));
+
+(function test() {
+  console.log("!");
+})();
