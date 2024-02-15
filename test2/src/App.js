@@ -6,6 +6,9 @@ import StyledBtn from "./components/StyledBtn";
 import TailwindBtn from "./components/TailwindBtn";
 import SomeComponent from "./components/SomeComponent";
 import UseContext from "./components/UseContext";
+import RecoilComponent from "./components/RecoilComponent";
+import JotailComponent from "./components/JotailComponent";
+import ZustandComponent from "./components/ZustandComponent";
 
 const ChildComponent = memo(({ name, value, onChange }) => {
   useEffect(() => {
@@ -22,6 +25,8 @@ const ChildComponent = memo(({ name, value, onChange }) => {
   )
 
 })
+
+
 
 function App() {
   const [status1, setStatus1] = useState(false);
@@ -41,6 +46,9 @@ function App() {
       <ChildComponent name="2" value={status2} onChange={toggle2} />
       <SomeComponent />
       <UseContext />
+      <RecoilComponent />
+      <JotailComponent />
+      <ZustandComponent />
     </div>
   );
 }
