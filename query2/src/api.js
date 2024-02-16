@@ -1,14 +1,13 @@
 const BASE_URL = "http://localhost:4000";
 
-export async function fetchTodoList() {
+export async function getTodo() {
   const url = `${BASE_URL}/fetch`;
   const response = await fetch(url);
   const result = await response.json();
   return result;
 }
 
-export async function postTodo(todo) {
-  console.log(todo);
+export async function addTodo(todo) {
   const response = await fetch(`${BASE_URL}/post/${todo}`, {
     method: "POST",
     headers: {
