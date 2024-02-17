@@ -42,30 +42,30 @@ export const errorPost = (error) => ({
   payload: error,
 });
 
-export const fetchTodo = () => {
-  return async (dispatch) => {
-    dispatch(requestFetch());
-    try {
-      const data = await getTodo();
-      dispatch(successFetch(data));
-    } catch (error) {
-      dispatch(errorFetch(error));
-    }
-  };
-};
+// export const fetchTodo = () => {
+//   return async (dispatch) => {
+//     dispatch(requestFetch());
+//     try {
+//       const data = await getTodo();
+//       dispatch(successFetch(data));
+//     } catch (error) {
+//       dispatch(errorFetch(error));
+//     }
+//   };
+// };
 
-export const postTodo = (content) => {
-  return async (dispatch) => {
-    dispatch(requestPost());
-    try {
-      await addTodo(content);
-      dispatch(successPost());
-      dispatch(fetchTodo());
-    } catch (error) {
-      dispatch(errorPost(error));
-    }
-  };
-};
+// export const postTodo = (content) => {
+//   return async (dispatch) => {
+//     dispatch(requestPost());
+//     try {
+//       await addTodo(content);
+//       dispatch(successPost());
+//       dispatch(fetchTodo());
+//     } catch (error) {
+//       dispatch(errorPost(error));
+//     }
+//   };
+// };
 
 // 리듀서
 const todoReducer = (state = initialState, action) => {
