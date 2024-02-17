@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import { thunk } from "redux-thunk";
 import { getTodo, addTodo } from "./api"; // API 호출을 하는 함수들
 
-// 초기 상태
+// 기존 코드
 const initialState = {
   fetchTodo: {
     data: [],
@@ -42,30 +42,30 @@ export const errorPost = (error) => ({
   payload: error,
 });
 
-// export const fetchTodo = () => {
-//   return async (dispatch) => {
-//     dispatch(requestFetch());
-//     try {
-//       const data = await getTodo();
-//       dispatch(successFetch(data));
-//     } catch (error) {
-//       dispatch(errorFetch(error));
-//     }
-//   };
-// };
+export const fetchTodo = () => {
+  return async (dispatch) => {
+    dispatch(requestFetch());
+    try {
+      const data = await getTodo();
+      dispatch(successFetch(data));
+    } catch (error) {
+      dispatch(errorFetch(error));
+    }
+  };
+};
 
-// export const postTodo = (content) => {
-//   return async (dispatch) => {
-//     dispatch(requestPost());
-//     try {
-//       await addTodo(content);
-//       dispatch(successPost());
-//       dispatch(fetchTodo());
-//     } catch (error) {
-//       dispatch(errorPost(error));
-//     }
-//   };
-// };
+export const postTodo = (content) => {
+  return async (dispatch) => {
+    dispatch(requestPost());
+    try {
+      await addTodo(content);
+      dispatch(successPost());
+      dispatch(fetchTodo());
+    } catch (error) {
+      dispatch(errorPost(error));
+    }
+  };
+};
 
 // 리듀서
 const todoReducer = (state = initialState, action) => {
@@ -127,6 +127,6 @@ const todoReducer = (state = initialState, action) => {
 };
 
 // 스토어 생성
-const store = createStore(todoReducer);
+const store = createStore(todoReducer, applyMiddleware(thunk));
 
 export default store;

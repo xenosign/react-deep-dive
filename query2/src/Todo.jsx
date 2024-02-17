@@ -23,39 +23,39 @@ export default function Todo() {
   const postIsLoading = useSelector((state) => state.postTodo.isLoading);
   const postError = useSelector((state) => state.postTodo.error);
 
-  const fetchTodo = async () => {
-    try {
-      dispatch(requestFetch());
-      const todoList = await getTodo();
-      dispatch(successFetch(todoList));
-    } catch (err) {
-      dispatch(errorFetch(err));
-    }
-  };
+  // const fetchTodo = async () => {
+  //   try {
+  //     dispatch(requestFetch());
+  //     const todoList = await getTodo();
+  //     dispatch(successFetch(todoList));
+  //   } catch (err) {
+  //     dispatch(errorFetch(err));
+  //   }
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      dispatch(requestPost());
-      await addTodo(inputRef.current.value);
-      dispatch(successPost());
-      fetchTodo();
-    } catch (err) {
-      dispatch(errorPost(err));
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     dispatch(requestPost());
+  //     await addTodo(inputRef.current.value);
+  //     dispatch(successPost());
+  //     fetchTodo();
+  //   } catch (err) {
+  //     dispatch(errorPost(err));
+  //   }
+  // };
 
   useEffect(() => {
     fetchTodo();
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchTodo());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchTodo());
+  }, [dispatch]);
 
-  // const handleSubmit = (e) => {
-  //   dispatch(postTodo(inputRef.current.value));
-  // };
+  const handleSubmit = (e) => {
+    dispatch(postTodo(inputRef.current.value));
+  };
 
   if (fetchIsLoading || postIsLoading) return <h1>로딩 중</h1>;
 
