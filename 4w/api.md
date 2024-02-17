@@ -1,3 +1,4 @@
+```js
 const BASE_URL = "http://localhost:4000";
 
 export async function getTodo() {
@@ -20,3 +21,4 @@ export async function addTodo(todo) {
 
   return await response.json();
 }
+```
