@@ -9,6 +9,7 @@ import UseContext from "./components/UseContext";
 import RecoilComponent from "./components/RecoilComponent";
 import JotailComponent from "./components/JotailComponent";
 import ZustandComponent from "./components/ZustandComponent";
+import DevTools from "./components/DevTools";
 
 const ChildComponent = memo(({ name, value, onChange }) => {
   useEffect(() => {
@@ -42,13 +43,7 @@ function App() {
 
   return (
     <div className="App">
-      <ChildComponent name="1" value={status1} onChange={toggle1} />
-      <ChildComponent name="2" value={status2} onChange={toggle2} />
-      <SomeComponent />
-      <UseContext />
-      <RecoilComponent />
-      <JotailComponent />
-      <ZustandComponent />
+      <DevTools />
     </div>
   );
 }
