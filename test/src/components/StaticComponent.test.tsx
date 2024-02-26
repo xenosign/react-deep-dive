@@ -2,14 +2,14 @@ import { render, screen } from "@testing-library/react";
 import StaticComponent from "./StaticComponent";
 
 beforeEach(() => {
-  // eslint-disable-next-line
+  // eslint-disable-next-line testing-library/no-render-in-setup
   render(<StaticComponent />);
 });
 
 describe("링크 확인", () => {
   it("링크가 3개 존재한다.", () => {
     const ul = screen.getByTestId("ul");
-    // eslint-disable-next-line
+    // eslint-disable-next-line testing-library/no-node-access
     expect(ul.children.length).toBe(3);
   });
 
