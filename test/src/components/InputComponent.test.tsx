@@ -38,9 +38,13 @@ describe("InputComponent 테스트", () => {
     const inputValue = "안녕하세요123";
 
     // 사용자의 입력을 흉내내는 메서드, 사용자가 키보드로 타이핑을 하는 것을 테스트 가능
-    act(() => {
-      userEvent.type(input, inputValue);
-    });
+
+    // fireEvent 로 하면 에러가 안생긴다
+    fireEvent.change(input, { target: { value: inputValue } });
+
+    // act(() => {
+    //   userEvent.type(input, inputValue);
+    // });
 
     expect(input.value).toEqual("123");
   });
