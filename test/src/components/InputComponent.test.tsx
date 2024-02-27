@@ -38,45 +38,43 @@ describe("InputComponent 테스트", () => {
     const inputValue = "안녕하세요123";
 
     // 사용자의 입력을 흉내내는 메서드, 사용자가 키보드로 타이핑을 하는 것을 테스트 가능
-
     // fireEvent 로 하면 에러가 안생긴다
     fireEvent.change(input, { target: { value: inputValue } });
-
-    // act(() => {
-    //   userEvent.type(input, inputValue);
-    // });
 
     expect(input.value).toEqual("123");
   });
 
-  // it("아이디를 입력하지 않으면 버튼이 활성화되지 않는다.", () => {
-  //   const { button } = setup();
+  it("아이디를 입력하지 않으면 버튼이 활성화되지 않는다.", () => {
+    const { button } = setup();
+    expect(button).toBeDisabled();
+  });
 
-  //   expect(button).toBeDisabled();
-  // });
+  it("아이디를 입력하면 버튼이 활성화된다.", () => {
+    const { button, input } = setup();
+    const inputValue = "helloworld";
 
-  // it("아이디를 입력하면 버튼이 활성화된다.", () => {
-  //   const { button, input } = setup();
-  //   const inputValue = "helloworld";
+    // fireEvent 로 변경
+    // userEvent.type(input, inputValue);
+    fireEvent.change(input, { target: { value: inputValue } });
 
-  //   userEvent.type(input, inputValue);
+    expect(input.value).toEqual(inputValue);
+    expect(button).toBeEnabled();
+  });
 
-  //   expect(input.value).toEqual(inputValue);
-  //   expect(button).toBeEnabled();
-  // });
+  it("버튼을 클릭하면 alert가 해당 아이디로 표시된다.", () => {
+    const alertMock = jest
+      .spyOn(window, "alert")
+      .mockImplementation((_: string) => undefined);
 
-  // it("버튼을 클릭하면 alert가 해당 아이디로 표시된다.", () => {
-  //   const alertMock = jest
-  //     .spyOn(window, "alert")
-  //     .mockImplementation((_: string) => undefined);
+    const { button, input } = setup();
+    const inputValue = "helloworld";
 
-  //   const { button, input } = setup();
-  //   const inputValue = "helloworld";
+    // fireEvent 로 변경
+    // userEvent.type(input, inputValue);
+    fireEvent.change(input, { target: { value: inputValue } });
+    fireEvent.click(button);
 
-  //   userEvent.type(input, inputValue);
-  //   fireEvent.click(button);
-
-  //   expect(alertMock).toHaveBeenCalledTimes(1);
-  //   expect(alertMock).toHaveBeenCalledWith(inputValue);
-  // });
+    expect(alertMock).toHaveBeenCalledTimes(1);
+    expect(alertMock).toHaveBeenCalledWith(inputValue);
+  });
 });
