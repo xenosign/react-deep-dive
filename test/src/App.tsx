@@ -1,4 +1,5 @@
 import "./App.css";
+import { FetchComponent } from "./components/FetchComponent";
 import ForwardRef from "./components/ForwardRef";
 import { InputComponent } from "./components/InputComponent";
 import StaticComponent from "./components/StaticComponent";
@@ -10,8 +11,7 @@ import WithFoo from "./components/WithFoo";
 function App() {
   return (
     <div className="App">
-      <StaticComponent />
-      <InputComponent />
+      <FetchComponent />
     </div>
   );
 }

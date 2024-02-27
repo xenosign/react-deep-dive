@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { rest } from "msw";
+import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
-
 import { FetchComponent } from "./FetchComponent";
 
 const MOCK_TODO_RESPONSE = {
@@ -12,13 +11,13 @@ const MOCK_TODO_RESPONSE = {
 };
 
 const server = setupServer(
-  rest.get("/todos/:id", (req, res, ctx: any) => {
-    const todoId = req.params.id;
+  http.get("/todos/:id", ({ request, params }) => {
+    const todoId = params.id;
 
     if (Number(todoId)) {
-      return res(ctx.json({ ...MOCK_TODO_RESPONSE, id: Number(todoId) }));
+      return HttpResponse.json({ ...MOCK_TODO_RESPONSE, id: Number(todoId) });
     } else {
-      return res(ctx.status(404));
+      return new HttpResponse(null, { status: 404 });
     }
   })
 );
@@ -47,8 +46,8 @@ describe("FetchComponent 테스트", () => {
 
   it("버튼을 클릭하고 서버 요청에서 에러가 발생하면 에러 문구를 노출한다.", async () => {
     server.use(
-      rest.get("/todos/:id", (req, res, ctx: any) => {
-        return res(ctx.status(503));
+      http.get("/todos/:id", () => {
+        return new HttpResponse(null, { status: 503 });
       })
     );
 
