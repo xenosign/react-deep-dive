@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
 import { FetchComponent } from "./FetchComponent";
+import "@testing-library/jest-dom";
 
 const MOCK_TODO_RESPONSE = {
   userId: 1,
@@ -46,7 +47,7 @@ describe("FetchComponent 테스트", () => {
 
   it("버튼을 클릭하고 서버 요청에서 에러가 발생하면 에러 문구를 노출한다.", async () => {
     server.use(
-      http.get("/todos/:id", (info) => {
+      http.get("/todos/:id", () => {
         return new HttpResponse(null, { status: 503 });
       })
     );
